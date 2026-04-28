@@ -1,0 +1,55 @@
+{
+  "name": "Lightning Strike",
+  "type": "radial",
+  "angle": 270,
+  "scaleX": 1.65,
+  "scaleY": 0.15,
+  "posX": 50,
+  "posY": 0,
+  "ratioW": 9,
+  "ratioH": 16,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.04,
+      "color": "#ccddff"
+    },
+    {
+      "pos": 0.1,
+      "color": "#4466cc"
+    },
+    {
+      "pos": 0.2,
+      "color": "#111840"
+    },
+    {
+      "pos": 0.4,
+      "color": "#080e28"
+    },
+    {
+      "pos": 1,
+      "color": "#030608"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 1
+    },
+    {
+      "pos": 0.08,
+      "opacity": 1
+    },
+    {
+      "pos": 0.25,
+      "opacity": 0.9
+    },
+    {
+      "pos": 1,
+      "opacity": 1
+    }
+  ]
+}

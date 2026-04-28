@@ -1,0 +1,47 @@
+{
+  "name": "Revenge",
+  "type": "linear",
+  "angle": 336,
+  "scaleX": 1.18,
+  "scaleY": 0.38,
+  "posX": 97,
+  "posY": 66,
+  "ratioW": 10,
+  "ratioH": 5,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#b00d2c"
+    },
+    {
+      "pos": 0.158,
+      "color": "#6694f0"
+    },
+    {
+      "pos": 0.458,
+      "color": "#b64c2d"
+    },
+    {
+      "pos": 0.529,
+      "color": "#f4deb4"
+    },
+    {
+      "pos": 0.581,
+      "color": "#ee313d"
+    },
+    {
+      "pos": 1,
+      "color": "#795312"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 0.66
+    },
+    {
+      "pos": 1,
+      "opacity": 0.73
+    }
+  ]
+}

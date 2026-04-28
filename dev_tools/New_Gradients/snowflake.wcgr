@@ -1,0 +1,155 @@
+{
+  "name": "Snowflake",
+  "type": "angle",
+  "angle": 0,
+  "scaleX": 1,
+  "scaleY": 1,
+  "posX": 50,
+  "posY": 50,
+  "ratioW": 10,
+  "ratioH": 10,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.04,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.041,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.123,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.124,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.164,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.165,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.247,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.248,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.288,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.289,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.371,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.372,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.412,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.413,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.495,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.496,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.536,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.537,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.619,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.62,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.66,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.661,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.743,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.744,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.784,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.785,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.867,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.868,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.908,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.909,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 0.991,
+      "color": "#a8ccee"
+    },
+    {
+      "pos": 1,
+      "color": "#ffffff"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 1
+    },
+    {
+      "pos": 1,
+      "opacity": 1
+    }
+  ]
+}

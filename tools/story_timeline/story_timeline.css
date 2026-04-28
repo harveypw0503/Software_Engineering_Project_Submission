@@ -1,0 +1,608 @@
+/* ===== Story Timeline tool-specific styles =====*/
+
+:root {
+  --tl-accent: #2d9dda;
+  --tl-line:   #c7c9d1;
+  --tl-danger: #dc2626;
+  --tl-park:   #f59e0b;
+}
+
+/* Convert popup button variants */
+.event-btn   { background: var(--tl-accent) !important; color: #fff !important; }
+.chapter-btn { background: #e5e7eb !important; color: #333 !important; }
+.book-btn    { background: #dbeafe !important; color: var(--tl-accent) !important; }
+.parking-btn { background: var(--tl-park) !important; color: #fff !important; }
+body.dark-mode .chapter-btn { background: #444 !important; color: #eee !important; }
+body.dark-mode .parking-btn { background: #d97706 !important; }
+
+/* Collapsible toolbar */
+.tool-collapsible-body { display: flex; flex-wrap: wrap; gap: 20px; }
+
+@media (min-width: 641px) {
+  .tool-collapsible:first-of-type .tool-collapsible-body { justify-content: center; }
+}
+
+.tool-collapsible:nth-of-type(2) .tool-collapsible-body {
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .tool-collapsible-body { flex-direction: column; gap: 12px; align-items: center; }
+}
+
+/* Layout */
+.content-row        { display: flex; gap: 20px; margin-top: 30px; }
+.timeline-container { flex: 1; min-width: 0; }
+.section-heading    { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+
+/* Number badge */
+.number-badge {
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  min-width: 26px;
+  padding: 4px 8px;
+  background: var(--tl-accent);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.2;
+  pointer-events: none;
+}
+.number-badge:empty { opacity: 0; }
+body.dark-mode .number-badge { background: #3b82f6; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 30px; min-height: 200px; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 14px; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--tl-line);
+}
+
+/* Item wrapper */
+.item {
+  margin-bottom: 10px;
+  touch-action: none;
+  min-width: 0;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.item.dragging {
+  opacity: 0.5;
+  transform: rotate(2deg) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  z-index: 1000;
+  cursor: grabbing;
+}
+.item.drag-over { transform: translateY(4px); }
+
+/* Hidden block children (collapsed state) */
+.item.block-child-hidden {
+  display: none !important;
+}
+
+.droppable { min-height: 120px; }
+.droppable.drag-active {
+  background: rgba(45,157,218,0.05);
+  border: 2px dashed var(--tl-accent);
+  border-radius: 8px;
+}
+body.dark-mode .droppable.drag-active { background: rgba(59,130,246,0.1); border-color: #3b82f6; }
+
+@keyframes itemInsert {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.item.just-inserted { animation: itemInsert 0.3s ease; }
+
+@keyframes itemConverted {
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0   rgba(45,157,218,0.7); }
+  50%  { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(45,157,218,0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(45,157,218,0); }
+}
+.item.just-converted { animation: itemConverted 0.6s ease; }
+
+/* Shared row */
+.book .label,
+.chapter .label,
+.event {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px 12px 46px;
+  border-radius: 10px;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.book .label:hover,
+.chapter .label:hover,
+.event:hover {
+  background: rgba(45,157,218,0.06);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Book */
+.book { margin: 8px 0; }
+.book .label {
+  font-size: 16px; font-weight: 700; letter-spacing: .04em;
+  background: rgba(45,157,218,0.08);
+  border: 1px solid rgba(45,157,218,0.3);
+  min-height: 44px;
+}
+body.dark-mode .book .label { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); }
+.book .bar { height: 4px; margin-top: 4px; border-radius: 3px; background: var(--tl-accent); }
+
+/* Chapter */
+.chapter { margin: 8px 0; }
+.chapter .label {
+  font-size: 16px; font-weight: 700; letter-spacing: .04em;
+  background: rgba(130,130,130,0.08);
+  border: 1px solid rgba(120,120,120,0.3);
+  min-height: 44px;
+}
+body.dark-mode .chapter .label { background: rgba(128,128,128,0.15); border-color: rgba(128,128,128,0.4); }
+.chapter .bar { height: 3px; margin-top: 3px; border-radius: 3px; background: rgba(128,128,128,0.4); }
+
+/* Event */
+.event { margin: 4px 0; background: #fff; border: 1px solid #e5e7eb; min-height: 40px; }
+body.dark-mode .event { background: #484848; border-color: #333; }
+.event:hover { border-color: var(--tl-accent); }
+
+/* Editable text */
+.label-text, .text {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.label-text:hover, .text:hover { background: rgba(0,0,0,0.05); }
+body.dark-mode .label-text:hover,
+body.dark-mode .text:hover     { background: rgba(255,255,255,0.05); }
+.label-text:focus, .text:focus {
+  background: rgba(45,157,218,0.12);
+  border-color: var(--tl-accent);
+  box-shadow: 0 0 0 3px rgba(45,157,218,0.15);
+  white-space: normal;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.actions button {
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #6b7280;
+  transition: transform 0.1s ease;
+}
+.actions button:hover        { background: rgba(0,0,0,0.08); transform: scale(1.05); }
+body.dark-mode .actions button:hover { background: rgba(255,255,255,0.1); }
+.actions .delete:hover  { background: #fee2e2; color: var(--tl-danger); }
+.actions .park:hover    { background: #fef3c7; color: var(--tl-park); }
+.actions .restore:hover { background: #dbeafe; color: var(--tl-accent); }
+.actions .convert:hover { background: #e0f2fe; color: var(--tl-accent); }
+body.dark-mode .actions .delete:hover  { background: rgba(220,38,38,0.2); }
+body.dark-mode .actions .park:hover    { background: rgba(245,158,11,0.2); }
+body.dark-mode .actions .restore:hover,
+body.dark-mode .actions .convert:hover { background: rgba(59,130,246,0.2); }
+
+/* ============================================================
+   BLOCK COLLAPSE TOGGLE BUTTON
+   Sits just after the number badge, before the title text.
+   Only present on book/chapter items.
+============================================================ */
+.block-toggle-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.7);
+  color: #555;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.18s cubic-bezier(0.34,1.4,0.64,1);
+  /* Override any inherited .actions button styles */
+  margin: 0;
+}
+
+.block-toggle-btn:hover {
+  background: rgba(45,157,218,0.12) !important;
+  border-color: var(--tl-accent) !important;
+  color: var(--tl-accent) !important;
+  transform: scale(1.08) !important;
+}
+
+/* When the block is collapsed the chevron should look "closed" */
+.block-toggle-btn.is-collapsed {
+  background: rgba(45,157,218,0.08);
+  border-color: rgba(45,157,218,0.3);
+  color: var(--tl-accent);
+}
+
+body.dark-mode .block-toggle-btn {
+  background: rgba(0,0,0,0.25);
+  border-color: rgba(255,255,255,0.12);
+  color: #aaa;
+}
+body.dark-mode .block-toggle-btn:hover {
+  background: rgba(59,130,246,0.2) !important;
+  border-color: #3b82f6 !important;
+  color: #7dd3f8 !important;
+}
+body.dark-mode .block-toggle-btn.is-collapsed {
+  background: rgba(59,130,246,0.12);
+  border-color: rgba(59,130,246,0.35);
+  color: #7dd3f8;
+}
+
+/* Collapse indicator bar shown on the book/chapter when children are hidden */
+.collapse-count-badge {
+  display: none;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  background: rgba(0,0,0,0.05);
+  border-radius: 20px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+body.dark-mode .collapse-count-badge { background: rgba(255,255,255,0.07); color: #666; }
+
+[data-block-collapsed="true"] .collapse-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Convert popup */
+.convert-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.convert-popup-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  min-width: 300px;
+  animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+body.dark-mode .convert-popup-content { background: #2a2a2a; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85) translateY(-16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.convert-popup-header { font-size: 18px; font-weight: 600; margin-bottom: 16px; text-align: center; }
+.convert-popup-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+
+.convert-popup-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #f3f4f6;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.15s ease;
+}
+.convert-popup-btn:hover { background: #e0f2fe; border-color: var(--tl-accent); transform: translateX(4px); }
+body.dark-mode .convert-popup-btn { background: #383838; color: #eee; }
+body.dark-mode .convert-popup-btn:hover { background: rgba(59,130,246,0.2); border-color: #3b82f6; }
+
+.convert-icon { font-size: 20px; width: 28px; text-align: center; }
+
+.convert-popup-cancel {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b7280;
+}
+.convert-popup-cancel:hover { background: #f3f4f6; }
+body.dark-mode .convert-popup-cancel { border-color: #444; color: #9ca3af; }
+body.dark-mode .convert-popup-cancel:hover { background: #383838; }
+
+/* Drag handle */
+.handle { cursor: grab; padding: 6px 10px; border-radius: 6px; color: #6b7280; font-size: 16px; }
+.handle:hover        { background: rgba(0,0,0,0.1); }
+body.dark-mode .handle:hover { background: rgba(255,255,255,0.1); }
+.handle:active       { cursor: grabbing; }
+
+/* Details */
+.collapsed .details { display: none; }
+.details {
+  margin: 8px 0 0;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.02);
+  border-left: 3px solid var(--tl-accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+body.dark-mode .details { background: rgba(255,255,255,0.03); border-left-color: #3b82f6; color: #9ca3af; }
+.details textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.6;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: inherit;
+}
+.details textarea:hover { background: rgba(0,0,0,0.02); border-color: rgba(45,157,218,0.2); }
+body.dark-mode .details textarea:hover { background: rgba(255,255,255,0.02); border-color: rgba(59,130,246,0.3); }
+.details textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--tl-accent);
+  box-shadow: 0 0 0 3px rgba(45,157,218,0.1);
+}
+body.dark-mode .details textarea:focus {
+  background: rgba(255,255,255,0.05);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+/* Parking lot (modal only) */
+.parking-lot { display: none; }
+
+/* ============================================================
+   MOBILE ACTION POPUP (≤768px)
+   The ⋯ button replaces the actions row on small screens.
+   The popup floats anchored below the trigger button.
+============================================================ */
+
+/* The ⋯ "more actions" button — hidden on desktop */
+.mobile-actions-btn {
+  display: none;
+}
+
+/* The floating popup panel */
+.mobile-actions-popup {
+  position: fixed;
+  z-index: 99999;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 200px;
+  max-width: 260px;
+  animation: mobilePopupIn 0.2s cubic-bezier(0.34,1.4,0.64,1);
+}
+body.dark-mode .mobile-actions-popup {
+  background: #2a2a2a;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+
+.mobile-actions-popup.is-open {
+  display: flex;
+}
+
+@keyframes mobilePopupIn {
+  from { opacity: 0; transform: scale(0.9) translateY(-6px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0); }
+}
+
+/* Individual rows inside the popup */
+.mobile-popup-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s;
+}
+.mobile-popup-row:hover { background: rgba(0,0,0,0.06); }
+body.dark-mode .mobile-popup-row { color: #eee; }
+body.dark-mode .mobile-popup-row:hover { background: rgba(255,255,255,0.08); }
+
+.mobile-popup-row .mpr-icon { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; }
+.mobile-popup-row .mpr-label { flex: 1; }
+
+/* Danger row */
+.mobile-popup-row.mpr-danger { color: var(--tl-danger); }
+.mobile-popup-row.mpr-danger:hover { background: #fee2e2; }
+body.dark-mode .mobile-popup-row.mpr-danger:hover { background: rgba(220,38,38,0.2); }
+
+/* Park/restore row */
+.mobile-popup-row.mpr-park:hover { background: #fef3c7; }
+body.dark-mode .mobile-popup-row.mpr-park:hover { background: rgba(245,158,11,0.2); }
+
+/* Divider inside popup */
+.mobile-popup-divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 2px 0;
+}
+body.dark-mode .mobile-popup-divider { background: #3a3a3a; }
+
+/* Scrim to dismiss popup on outside tap */
+.mobile-popup-scrim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+}
+.mobile-popup-scrim.is-open { display: block; }
+
+/* Responsive — apply mobile layout at ≤768px */
+@media (max-width: 768px) {
+  .desktop-add-buttons,
+  .desktop-input-field { display: none; }
+  .content-row { flex-direction: column; }
+  .timeline { padding-left: 20px; }
+  .timeline::before { left: 8px; }
+
+  .book .label, .chapter .label, .event {
+    min-height: 48px;
+    padding: 10px 12px 10px 42px;
+    gap: 8px;
+  }
+
+  /* On mobile: hide all action buttons EXCEPT the handle and the ⋯ button */
+  .actions button:not(.mobile-actions-btn) { display: none; }
+  .actions .handle                         { display: flex; }
+
+  /* Show the ⋯ button */
+  .mobile-actions-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    font-size: 20px;
+    line-height: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    border-radius: 6px;
+  }
+  .mobile-actions-btn:hover { background: rgba(0,0,0,0.08); }
+  body.dark-mode .mobile-actions-btn { color: #aaa; }
+  body.dark-mode .mobile-actions-btn:hover { background: rgba(255,255,255,0.1); }
+
+  /* Block toggle button adjustments on mobile */
+  .block-toggle-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .details        { margin: 6px 0 0; padding: 10px 12px; font-size: 13px; }
+  .details textarea { min-height: 50px; padding: 6px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .section-heading { font-size: 1rem; }
+  .book .label, .chapter .label, .event {
+    min-height: 44px;
+    padding: 8px 10px 8px 38px;
+    font-size: 14px;
+  }
+  .number-badge   { min-width: 22px; padding: 3px 6px; font-size: 12px; }
+  .actions button { padding: 3px 5px; font-size: 13px; }
+}
+
+
+/* Block toggle button — locked state (parking lot / recycle bin)
+   Uses a class rather than the disabled attribute so addEventListener still fires,
+   allowing _handleBlockToggleClick to show the warning toast. */
+.block-toggle-btn.btn-locked {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Block toggle button — no children to collapse (empty leader in timeline) */
+.block-toggle-btn.btn-no-children {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+/* ============================================================
+   TOAST NOTIFICATION
+   Used by showToast() and showWarningToast()
+============================================================ */
+.tl-toast {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.34,1.4,0.64,1);
+  pointer-events: none;
+  z-index: 200000;
+  white-space: nowrap;
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+}
+
+body.dark-mode .tl-toast {
+  background: #e0e0f0;
+  color: #1a1a2e;
+}
+
+.tl-toast.tl-toast-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Warning variant — amber pill */
+.tl-toast.tl-toast-warning {
+  background: #92400e;
+  color: #fef3c7;
+}
+
+body.dark-mode .tl-toast.tl-toast-warning {
+  background: #fbbf24;
+  color: #1a1100;
+}

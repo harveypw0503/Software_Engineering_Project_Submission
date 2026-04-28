@@ -1,0 +1,71 @@
+{
+  "name": "Eye",
+  "type": "radial",
+  "angle": 0,
+  "scaleX": 1.6,
+  "scaleY": 1,
+  "posX": 50,
+  "posY": 50,
+  "ratioW": 16,
+  "ratioH": 9,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.12,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.16,
+      "color": "#2a6030"
+    },
+    {
+      "pos": 0.22,
+      "color": "#3a8840"
+    },
+    {
+      "pos": 0.28,
+      "color": "#4aaa50"
+    },
+    {
+      "pos": 0.34,
+      "color": "#2a6030"
+    },
+    {
+      "pos": 0.38,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.42,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.46,
+      "color": "#f8f0e0"
+    },
+    {
+      "pos": 0.6,
+      "color": "#f0e8d8"
+    },
+    {
+      "pos": 0.75,
+      "color": "#e8dcc8"
+    },
+    {
+      "pos": 1,
+      "color": "#c8b898"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 1
+    },
+    {
+      "pos": 1,
+      "opacity": 1
+    }
+  ]
+}

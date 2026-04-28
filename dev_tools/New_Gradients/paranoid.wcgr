@@ -1,0 +1,43 @@
+{
+  "name": "Paranoid",
+  "type": "diamond",
+  "angle": 286,
+  "scaleX": 0.74,
+  "scaleY": 1.61,
+  "posX": 68,
+  "posY": 62,
+  "ratioW": 10,
+  "ratioH": 5,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#4a93cf"
+    },
+    {
+      "pos": 0.28198507764246616,
+      "color": "#d04e5b"
+    },
+    {
+      "pos": 0.45931259127727136,
+      "color": "#cbc83a"
+    },
+    {
+      "pos": 0.7272899270011374,
+      "color": "#4a93cf"
+    },
+    {
+      "pos": 1,
+      "color": "#b54430"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 1
+    },
+    {
+      "pos": 1,
+      "opacity": 1
+    }
+  ]
+}

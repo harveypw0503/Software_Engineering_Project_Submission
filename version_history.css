@@ -1,0 +1,36 @@
+/* ===== Version History Page ===== */
+
+.version-page {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.version-page h1 {
+  margin-bottom: 2rem;
+}
+
+.version-entry {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.version-entry h2 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+body.dark-mode .version-entry h2 {
+  color: var(--accent-light);
+}
+
+.version-entry ul {
+  margin-left: 1.2rem;
+}
+
+.version-entry li {
+  margin: 0.4rem 0;
+}

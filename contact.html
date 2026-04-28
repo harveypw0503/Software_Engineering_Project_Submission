@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Walter Creations</title>
+  
+  <!-- Global Page Styles -->
+  <link rel="stylesheet" href="global.css">
+  <!-- Page Specific Styles -->
+  <link rel="stylesheet" href="contact.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Contact Page Content -->
+  <main class="contact-page">
+
+    <!-- ===== HERO ===== -->
+    <section class="contact-hero">
+      <div class="contact-hero-orb orb-c1"></div>
+      <div class="contact-hero-orb orb-c2"></div>
+      <div class="contact-hero-inner">
+        <p class="contact-eyebrow">Reach Out</p>
+        <h1>Contact Us</h1>
+        <p>Have an idea, question or input? Send a message.</p>
+      </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="contact-layout">
+
+      <!-- ===== FORM ===== -->
+      <div class="contact-form-card">
+        <h2>Send a Message</h2>
+        <p class="form-intro">Fill out the form below.</p>
+        <form id="contact-form" action="https://formspree.io/f/xnjbenjr" method="POST" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Harvey Walter" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject matter here...">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button type="submit" class="contact-submit-btn" id="submit-btn">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-icon">→</span>
+          </button>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- ===== SIDEBAR ===== -->
+      <div class="contact-sidebar">
+
+        <div class="contact-info-card">
+          <div class="info-icon">✉️</div>
+          <h3>Email</h3>
+          <p>Reach out directly at:</p>
+          <a href="mailto:harveypw0503@gmail.com" class="info-link">harveypw0503@gmail.com</a>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="info-icon">💻</div>
+          <h3>GitHub</h3>
+          <p>Source code can be found at:</p>
+          <a href="https://github.com/harveypw0503/Walter_Creations" target="_blank" rel="noopener noreferrer" class="info-link">
+            github.com/harveypw0503/Walter_Creations ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Global JS (navbar + footer + dark mode) -->
+  <script src="global.js"></script>
+  <!-- Contact Form JS -->
+  <script src="contact.js"></script>
+</body>
+</html>

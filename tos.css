@@ -1,0 +1,67 @@
+/* ===== Terms of Use Page ===== */
+
+.tos-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.tos-page p {
+  line-height: 1.7;
+  margin: 0.9rem 0;
+  max-width: 65ch;
+}
+
+.tos-page section {
+  margin-top: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tos-page section:last-child {
+  border-bottom: none;
+}
+
+.tos-page ul {
+  margin: 1rem 0 1.25rem 1.25rem;
+  padding-left: 1rem;
+  max-width: 60ch;
+}
+
+.tos-page li {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+.tos-page h2 {
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+}
+
+.tos-page section:first-of-type p:first-child {
+  font-size: 1.05rem;
+}
+
+/* Dark mode */
+body.dark-mode .tos-page section {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .tos-page h2 {
+  color: var(--accent-light);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .tos-page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 5rem;
+  }
+
+  .tos-page p,
+  .tos-page ul { max-width: 100%; }
+
+  .tos-page h2 { font-size: 1.25rem; }
+}

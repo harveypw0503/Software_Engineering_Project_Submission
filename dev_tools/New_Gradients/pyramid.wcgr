@@ -1,0 +1,39 @@
+{
+  "name": "Pyramid",
+  "type": "diamond",
+  "angle": 270,
+  "scaleX": 2.65,
+  "scaleY": 1.39,
+  "posX": 50,
+  "posY": 100,
+  "ratioW": 10,
+  "ratioH": 5,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#b8d4c8"
+    },
+    {
+      "pos": 0.23,
+      "color": "#ccad4d"
+    },
+    {
+      "pos": 0.23299996948242188,
+      "color": "#abc1de"
+    },
+    {
+      "pos": 0.48500000000000004,
+      "color": "#1c0ac2"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 1
+    },
+    {
+      "pos": 1,
+      "opacity": 1
+    }
+  ]
+}

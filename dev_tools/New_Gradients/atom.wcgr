@@ -1,0 +1,95 @@
+{
+  "name": "Atom",
+  "type": "radial",
+  "angle": 0,
+  "scaleX": 1,
+  "scaleY": 1,
+  "posX": 50,
+  "posY": 50,
+  "ratioW": 10,
+  "ratioH": 10,
+  "colorStops": [
+    {
+      "pos": 0,
+      "color": "#ffffff"
+    },
+    {
+      "pos": 0.059,
+      "color": "#ffee88"
+    },
+    {
+      "pos": 0.06,
+      "color": "#ff8800"
+    },
+    {
+      "pos": 0.099,
+      "color": "#ff4400"
+    },
+    {
+      "pos": 0.1,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.139,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.14,
+      "color": "#4488ff"
+    },
+    {
+      "pos": 0.149,
+      "color": "#4488ff"
+    },
+    {
+      "pos": 0.15,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.249,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.25,
+      "color": "#3366dd"
+    },
+    {
+      "pos": 0.259,
+      "color": "#3366dd"
+    },
+    {
+      "pos": 0.26,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.399,
+      "color": "#000000"
+    },
+    {
+      "pos": 0.4,
+      "color": "#2244bb"
+    },
+    {
+      "pos": 0.409,
+      "color": "#2244bb"
+    },
+    {
+      "pos": 0.41,
+      "color": "#000000"
+    },
+    {
+      "pos": 1,
+      "color": "#000000"
+    }
+  ],
+  "opacityStops": [
+    {
+      "pos": 0,
+      "opacity": 1
+    },
+    {
+      "pos": 1,
+      "opacity": 1
+    }
+  ]
+}
