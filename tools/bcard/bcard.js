@@ -611,9 +611,9 @@ function refreshLayers() {
       item.dataset.elId=el.id;
 
       const isBg = el.type==='bgimage';
-      const icon = el.type==='text'?'✏️': isBg?'🌄': el.type==='image'?'🖼️':'▲';
+      const icon = el.type==='text'?'️': isBg?'': el.type==='image'?'':'▲';
       const name = el.type==='text' ? (el.text||'Text').slice(0,18) :
-                   isBg             ? '🌄 Background Image' :
+                   isBg             ? ' Background Image' :
                    el.type==='image'? (extraImages.find(i=>i.id===el.id)?.name||'Image').slice(0,18) :
                    (el.shapeId||'Shape');
       const otherSide=side==='front'?'back':'front';
@@ -626,7 +626,7 @@ function refreshLayers() {
         <span class="layer-name" title="${name}">${name}</span>
         ${canMove?`<button class="layer-move-btn" style="font-size:9px;padding:2px 5px;border:1px solid var(--bc-border);border-radius:3px;background:var(--bc-bg);color:var(--bc-muted);cursor:pointer;flex-shrink:0;white-space:nowrap;">${moveLabel}</button>`:'<span style="width:40px;flex-shrink:0"></span>'}
         <button class="layer-vis-btn" title="${el.visible===false?'Show':'Hide'}">
-          ${el.visible===false?'🙈':'👁'}
+          ${el.visible===false?'X':'👁'}
         </button>
       `;
 
@@ -1201,7 +1201,7 @@ function syncPropsPanel(el){
   chk('prop-mirror-y',(el.scaleY??1)<0);
 
   const isBgImg = el.type==='bgimage';
-  const labels={text:'✏ Text',image:'🖼 Image',shape:'▲ Shape',bgimage:'🌄 Background Image'};
+  const labels={text:'✏ Text',image:'🖼 Image',shape:'▲ Shape',bgimage:' Background Image'};
   const lbl=document.getElementById('props-type-label');if(lbl)lbl.textContent=labels[el.type]||'Element';
 
   const showShape = el.type==='shape';
@@ -1217,7 +1217,7 @@ function syncPropsPanel(el){
     set('prop-shape-stroke', el.stroke||'rgba(0,0,0,0)');
     set('prop-shape-stroke-w', el.strokeW||0);
     const wbadge = document.getElementById('prop-shape-fill-wcgr');
-    if(wbadge) wbadge.textContent = el.fillWcgr ? '🌈 Gradient applied' : '';
+    if(wbadge) wbadge.textContent = el.fillWcgr ? 'Gradient applied' : '';
   }
   if(showText){
     set('prop-fontsize',   el.fontSize||28);
@@ -1229,14 +1229,14 @@ function syncPropsPanel(el){
     chk('prop-mirror-x-t',(el.scaleX??1)<0);
     chk('prop-mirror-y-t',(el.scaleY??1)<0);
     const wbadge = document.getElementById('prop-text-color-wcgr');
-    if(wbadge) wbadge.textContent = el.colorWcgr ? '🌈 Gradient applied' : '';
+    if(wbadge) wbadge.textContent = el.colorWcgr ? 'Gradient applied' : '';
   }
   if(showBgImg){
     const bg = bgState[el.side];
     set('prop-bg-overlay-op', bg.overlayOp??0.3);
     set('prop-bg-overlay-color', bg.overlayColor||'#000000');
     const wbadge = document.getElementById('prop-bg-overlay-wcgr');
-    if(wbadge) wbadge.textContent = bg.overlayWcgr ? '🌈 Gradient applied' : '';
+    if(wbadge) wbadge.textContent = bg.overlayWcgr ? 'Gradient applied' : '';
   }
 
   const noSel=document.getElementById('no-selection-msg');
@@ -1335,7 +1335,7 @@ function applyWcgrToSlot(slotType, data) {
     selectedEl.fillWcgr = data;
     renderElement(selectedEl);
     const b = document.getElementById('prop-shape-fill-wcgr');
-    if(b) b.textContent = data ? '🌈 Gradient applied' : '';
+    if(b) b.textContent = data ? 'Gradient applied' : '';
   } else if (slotType === 'text-color') {
     if (!selectedEl || selectedEl.type !== 'text') return;
     selectedEl.colorWcgr = data;
@@ -1356,7 +1356,7 @@ function applyWcgrToSlot(slotType, data) {
       domEl.style.color = selectedEl.color || textColors[selectedEl.side] || '#fff';
     }
     const b = document.getElementById('prop-text-color-wcgr');
-    if(b) b.textContent = data ? '🌈 Gradient applied' : '';
+    if(b) b.textContent = data ? 'Gradient applied' : '';
   } else if (slotType === 'bg-overlay') {
     const side = selectedEl?.type==='bgimage' ? selectedEl.side : currentSide;
     bgState[side].overlayWcgr = data;
