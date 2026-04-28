@@ -53,13 +53,12 @@ const elements = {front:[], back:[]};
 const FRONT_TEXT_IDS = ['el-name','el-title','el-org','el-tagline'];
 const LOGO_ID = 'el-logo';
 
-// Panel position: 'left' | 'right' | 'bottom' (mobile auto)
 let panelSide = 'left';
 
 // ── UNDO HISTORY ──
 const MAX_HISTORY = 50;
-let history = [];     // array of JSON snapshots
-let historyIdx = -1;  // pointer into history
+let history = [];
+let historyIdx = -1;
 
 // ── SHAPES ──
 const SHAPES = [
